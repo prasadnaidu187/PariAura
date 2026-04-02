@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PariAura</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+<style>
+
+/* ===== GOOGLE FONTS ===== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;500&display=swap');
+
+/* ===== GLOBAL ===== */
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'Roboto', sans-serif;
+  background:#f9f9f9;
+  color:#333;
+  line-height:1.7;
+  scroll-behavior: smooth;
+}
+
+/* ===== NAVBAR (UNCHANGED) ===== */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: transparent !important;
+  transition: 0.4s;
+  z-index: 999;
+}
+
+.navbar-brand img {
+  height: 140px;
+  transition: 0.4s;
+}
+
+.navbar.scrolled .navbar-brand img {
+  height: 80px;
+}
+
+.navbar .nav-link {
+  color: #fff !important;
+  font-weight: 500;
+}
+
+.navbar.scrolled {
+  background: rgba(15,15,15,0.9) !important;
+  backdrop-filter: blur(10px);
+}
+
+.navbar-toggler { border:none; }
+
+.navbar-toggler-icon {
+  background:none;
+  width:25px;
+  height:2px;
+  background-color:white;
+  position:relative;
+  display:inline-block;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+  content:'';
+  position:absolute;
+  width:25px;
+  height:2px;
+  background-color:white;
+  left:0;
+}
+
+.navbar-toggler-icon::before { top:-7px; }
+.navbar-toggler-icon::after { top:7px; }
+
+/* ===== HERO (UNCHANGED) ===== */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1583321500900-82807e458f3c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8dGVhbXdvcmslMjBjb2xsYWJvcmF0aW9ufGVufDB8fDB8fHww') center center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.5);
+  z-index:1;
+}
+
+.hero .content {
+  position: relative;
+  z-index:2;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+}
+
+/* ===== SERVICES ===== */
+.services-section {
+  position: relative;
+  min-height: 100vh;
+  background: url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.services-section .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,30,0.7);
+}
+
+.title {
+  position: relative;
+  z-index: 2;
+  font-size: 3rem;
+}
+
+.subtitle {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 40px;
+}
+
+.glass-box {
+  position: relative;
+  z-index: 2;
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.08);
+}
+
+.service-card {
+  padding: 25px;
+  border-radius: 15px;
+  transition: 0.4s;
+  background: rgba(255,255,255,0.05);
+}
+
+.service-card:hover {
+  transform: translateY(-10px) scale(1.05);
+}
+
+.service-card.active {
+  background: rgba(26,115,232,0.3);
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.service-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.service-card li {
+  margin: 10px 0;
+}
+
+.service-card i {
+  margin-right: 8px;
+  color: #1A73E8;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background:#0e0e0e;
+  color:#ccc;
+  padding:40px 0;
+  text-align:center;
+}
+
+footer a {
+  color:#ccc;
+  margin:0 10px;
+  text-decoration:none;
+}
+
+footer a:hover { color:#1A73E8; }
+
+/* ===== BUTTON ===== */
+.btn-primary {
+  background:#1A73E8;
+  border:none;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width:768px){
+  .navbar-brand img { height:110px; }
+  .navbar.scrolled .navbar-brand img { height:80px; }
+  .hero h1 { font-size:2rem; }
+  .hero p { font-size:1rem; }
+}
+.whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  color: #fff;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  text-decoration: none;
+  z-index: 9999;
+}
+
+.whatsapp-btn:hover {
+  background: #1ebe5d;
+  transform: scale(1.1);
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <img src="images/logo.png" alt="Logo">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+
+      <a href="contact.html" class="btn btn-primary ms-3">Get a Quote</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="content">
+    <h1>We Build Your Digital Future</h1>
+    <p>Modern Websites and Digital Marketing Solutions to Help Your Business Grow Online</p>
+    <a href="contact.html" class="btn btn-light btn-lg">Get Started Today</a>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="services-section">
+  <div class="overlay"></div>
+
+  <div class="container text-center">
+    <h1 class="title">PariAura Services</h1>
+    <p class="subtitle">CHOOSE YOUR PLAN</p>
+
+    <div class="glass-box">
+      <div class="row">
+
+        <div class="col-md-4">
+          <a href="contact.html" class="card-link">
+            <div class="service-card">
+              <h4>Starter</h4>
+              <ul>
+                <li><i class="bi bi-geo-alt"></i> Google Maps Optimization</li>
+                <li><i class="bi bi-star"></i> Reviews Management</li>
+                <li><i class="bi bi-instagram"></i> Social Media Presence</li>
+              </ul>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4">
+          <a href="contact.html" class="card-link">
+            <div class="service-card active">
+              <h4>Growth</h4>
+              <ul>
+                <li><i class="bi bi-geo-alt"></i> Google Maps Optimization</li>
+                <li><i class="bi bi-star"></i> Reviews Management</li>
+                <li><i class="bi bi-graph-up"></i> Local SEO</li>
+                <li><i class="bi bi-megaphone"></i> Paid Ads</li>
+              </ul>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-md-4">
+          <a href="contact.html" class="card-link">
+            <div class="service-card">
+              <h4>Premium</h4>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> All Growth Features</li>
+                <li><i class="bi bi-whatsapp"></i> WhatsApp Automation</li>
+                <li><i class="bi bi-laptop"></i> Website / Landing Page</li>
+              </ul>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ===== WHY CHOOSE US (MODERN CARDS) ===== -->
+<section class="py-5 bg-light">
+  <div class="container text-center">
+    <h2 class="mb-5">Why Choose PariAura?</h2>
+
+    <div class="row g-4">
+
+      <div class="col-md-3">
+        <div class="p-4 bg-white shadow rounded-4">
+          <i class="bi bi-lightning-charge fs-1 text-primary"></i>
+          <h5 class="mt-3">Fast Delivery</h5>
+          <p>Quick turnaround without compromising quality.</p>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="p-4 bg-white shadow rounded-4">
+          <i class="bi bi-currency-rupee fs-1 text-primary"></i>
+          <h5 class="mt-3">Affordable</h5>
+          <p>Best pricing for small and growing businesses.</p>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="p-4 bg-white shadow rounded-4">
+          <i class="bi bi-people fs-1 text-primary"></i>
+          <h5 class="mt-3">Expert Team</h5>
+          <p>Experienced professionals delivering results.</p>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="p-4 bg-white shadow rounded-4">
+          <i class="bi bi-headset fs-1 text-primary"></i>
+          <h5 class="mt-3">24/7 Support</h5>
+          <p>Always available to help your business grow.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== STATS (GRADIENT STYLE) ===== -->
+<section class="py-5 text-center bg-dark text-white stats">
+  <div class="container text-center">
+    <div class="row">
+
+      <div class="col-md-3">
+        <h1>50+</h1>
+        <p>Projects Completed</p>
+      </div>
+
+      <div class="col-md-3">
+        <h1>30+</h1>
+        <p>Happy Clients</p>
+      </div>
+
+      <div class="col-md-3">
+        <h1>100%</h1>
+        <p>Satisfaction</p>
+      </div>
+
+      <div class="col-md-3">
+        <h1>24/7</h1>
+        <p>Support</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== TESTIMONIALS (CARDS) ===== -->
+<section class="py-5 bg-light">
+  <div class="container text-center">
+    <h2 class="mb-5">What Our Clients Say</h2>
+
+    <div class="row g-4">
+
+      <div class="col-md-4">
+        <div class="p-4 bg-white shadow rounded-4">
+          <p>"Amazing service! My business visibility improved."</p>
+          <h6 class="mt-3">— Local Business</h6>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="p-4 bg-white shadow rounded-4">
+          <p>"Got more leads within weeks. Highly recommend."</p>
+          <h6 class="mt-3">— Startup Owner</h6>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="p-4 bg-white shadow rounded-4">
+          <p>"Professional work and great support."</p>
+          <h6 class="mt-3">— Entrepreneur</h6>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== FAQ (PROPER ACCORDION UI) ===== -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">FAQs</h2>
+
+    <div class="accordion" id="faq">
+
+      <div class="accordion-item mb-2 shadow-sm">
+        <h2 class="accordion-header">
+          <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#q1">
+            How long does it take?
+          </button>
+        </h2>
+        <div id="q1" class="accordion-collapse collapse show">
+          <div class="accordion-body">Usually 3–7 days depending on project.</div>
+        </div>
+      </div>
+
+      <div class="accordion-item shadow-sm">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#q2">
+            Do you provide support?
+          </button>
+        </h2>
+        <div id="q2" class="accordion-collapse collapse">
+          <div class="accordion-body">Yes, we provide ongoing support.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== CTA (STRONG DESIGN) ===== -->
+<section class="text-center py-5 text-white"
+style="background: linear-gradient(135deg,#0d47a1,#1A73E8);">
+
+  <div class="container">
+    <h2 class="mb-3">Ready to Grow Your Business?</h2>
+    <p>Let’s build your online presence today.</p>
+    <a href="contact.html" class="btn btn-light btn-lg mt-3 px-5">Contact Us</a>
+  </div>
+
+</section>
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <img src="images/logo.png" style="height:80px; margin-bottom:10px;">
+    <p>© 2026 PariAura | All Rights Reserved</p>
+  </div>
+</footer>
+
+<!-- ===== WHATSAPP BUTTON ===== -->
+<a href="https://wa.me/917075901216" target="_blank" class="whatsapp-btn">
+  <i class="bi bi-whatsapp"></i>
+</a>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+window.addEventListener("scroll", function () {
+  const navbar = document.querySelector(".navbar");
+  if (window.scrollY > 50) {
+    navbar.classList.add("scrolled");
+  } else {
+    navbar.classList.remove("scrolled");
+  }
+});
+// ===== SCROLL REVEAL ANIMATION =====
+const revealElements = document.querySelectorAll("section, .service-card");
+
+const revealOnScroll = () => {
+  const windowHeight = window.innerHeight;
+
+  revealElements.forEach(el => {
+    const elementTop = el.getBoundingClientRect().top;
+
+    if (elementTop < windowHeight - 100) {
+      el.style.opacity = "1";
+      el.style.transform = "translateY(0)";
+    }
+  });
+};
+
+revealElements.forEach(el => {
+  el.style.opacity = "0";
+  el.style.transform = "translateY(60px)";
+  el.style.transition = "all 0.8s ease";
+});
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
+
+
+// ===== STATS COUNTER ANIMATION =====
+const counters = document.querySelectorAll(".stats h1, .stats h2");
+
+const runCounter = (counter) => {
+  const target = +counter.innerText.replace("+", "");
+  let count = 0;
+
+  const update = () => {
+    const increment = target / 80;
+
+    if (count < target) {
+      count += increment;
+      counter.innerText = Math.ceil(count) + "+";
+      setTimeout(update, 20);
+    } else {
+      counter.innerText = target + "+";
+    }
+  };
+
+  update();
+};
+
+// Trigger counter when visible
+let counterStarted = false;
+
+window.addEventListener("scroll", () => {
+  const statsSection = document.querySelector(".stats");
+
+  if (!statsSection) return;
+
+  const sectionTop = statsSection.getBoundingClientRect().top;
+
+  if (sectionTop < window.innerHeight && !counterStarted) {
+    counters.forEach(counter => runCounter(counter));
+    counterStarted = true;
+  }
+});
+
+
+// ===== HOVER GLOW EFFECT =====
+const cards = document.querySelectorAll(".service-card, .bg-white");
+
+cards.forEach(card => {
+  card.addEventListener("mouseenter", () => {
+    card.style.boxShadow = "0 20px 40px rgba(26,115,232,0.3)";
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.boxShadow = "";
+  });
+});
+
+
+// ===== SMOOTH SCROLL (ANCHORS) =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    document.querySelector(this.getAttribute("href"))
+      .scrollIntoView({ behavior: "smooth" });
+  });
+});
+
+</script>
+
+</body>
+</html>

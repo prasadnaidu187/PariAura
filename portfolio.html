@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PariAura</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+  /* ===== GOOGLE FONTS ===== */
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;500&display=swap');
+
+  /* ===== GLOBAL ===== */
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Roboto', sans-serif; background:#f9f9f9; color:#333; line-height:1.7; scroll-behavior: smooth; }
+
+  /* ===== NAVBAR ===== */
+  .navbar { position: fixed; width: 100%; top: 0; left: 0; background: transparent !important; transition: 0.4s; z-index: 999; }
+  .navbar-brand img { height:140px; transition:0.4s; }
+  .navbar.scrolled .navbar-brand img { height:100px; }
+  .navbar .nav-link { color: #fff !important; font-weight:500; }
+  .navbar.scrolled { background: rgba(15,15,15,0.9) !important; backdrop-filter: blur(10px); }
+  .navbar.scrolled .nav-link { color:#fff !important; }
+  .navbar-toggler { border:none; }
+  .navbar-toggler-icon { background:none; width:25px; height:2px; background-color:white; position:relative; display:inline-block; }
+  .navbar-toggler-icon::before, .navbar-toggler-icon::after { content:''; position:absolute; width:25px; height:2px; background-color:white; left:0; }
+  .navbar-toggler-icon::before { top:-7px; }
+  .navbar-toggler-icon::after { top:7px; }
+  .navbar.scrolled .navbar-toggler-icon,
+  .navbar.scrolled .navbar-toggler-icon::before,
+  .navbar.scrolled .navbar-toggler-icon::after { background-color:white; }
+
+  /* ===== HERO SECTION ===== */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('https://images.unsplash.com/photo-1556559322-b5071efadc88?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fFNlYXJjaCUyME9mZmljZSUyMHdpdGglMjBQbGFudHN8ZW58MHx8MHx8fDA%3D') center center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+  }
+  .hero-overlay { position: absolute; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index:1; }
+  .hero .content { position: relative; z-index:2; }
+  .hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 20px; }
+  .hero p { font-size: 1.3rem; margin-bottom: 30px; }
+  .hero .btn { padding: 12px 30px; font-size:1.1rem; }
+
+  /* ===== PORTFOLIO GRID ===== */
+  .card { border-radius:12px; transition:0.4s; box-shadow:0 8px 20px rgba(0,0,0,0.08); }
+  .card:hover { transform: translateY(-10px); box-shadow:0 20px 40px rgba(0,0,0,0.3); }
+  .card img { height:200px; object-fit:cover; border-top-left-radius:12px; border-top-right-radius:12px; }
+
+  /* ===== FOOTER ===== */
+  footer { background:#0e0e0e; color:#ccc; padding:40px 0; text-align:center; }
+  footer a { color:#ccc; margin:0 10px; text-decoration:none; }
+  footer a:hover { color:#1A73E8; }
+
+  /* ===== BUTTON ===== */
+  .btn-primary { background:#1A73E8; border:none; }
+  .btn-primary:hover { background:#1666c1; }
+
+  /* ===== MOBILE ===== */
+  @media (max-width:768px){
+    .navbar-brand img { height:110px; }
+    .navbar.scrolled .navbar-brand img { height:80px; }
+    .hero h1 { font-size:2rem; }
+    .hero p { font-size:1rem; }
+    .card img { height:150px; }
+  }
+  .whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  color: #fff;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  text-decoration: none;
+  z-index: 9999;
+}
+
+.whatsapp-btn:hover {
+  background: #1ebe5d;
+  transform: scale(1.1);
+}
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="Logo"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link active" href="portfolio.html">Portfolio</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn-primary ms-3">Get a Quote</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="content">
+    <h1>Our Portfolio</h1>
+    <p>A showcase of projects we've delivered to our valued clients.</p>
+  </div>
+</section>
+
+<!-- Portfolio Grid -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Recent Projects</h2>
+    <div class="row g-4">
+      <!-- Project 1 -->
+      <div class="col-md-4">
+        <div class="card shadow h-100">
+          <img src="https://images.unsplash.com/photo-1581091870626-7a0659fcd5be?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Project 1">
+          <div class="card-body text-center">
+            <h5 class="card-title">E-commerce Website</h5>
+            <p class="card-text">A responsive online store for seamless shopping experience.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Project 2 -->
+      <div class="col-md-4">
+        <div class="card shadow h-100">
+          <img src="https://images.unsplash.com/photo-1581091012184-8f13905c9b11?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Project 2">
+          <div class="card-body text-center">
+            <h5 class="card-title">Corporate Website</h5>
+            <p class="card-text">Professional corporate website with modern UI/UX design.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Project 3 -->
+      <div class="col-md-4">
+        <div class="card shadow h-100">
+          <img src="https://images.unsplash.com/photo-1581090700227-4f4a14bda76b?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Project 3">
+          <div class="card-body text-center">
+            <h5 class="card-title">Digital Marketing Campaign</h5>
+            <p class="card-text">SEO and social media campaigns boosting online engagement.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Project 4 -->
+      <div class="col-md-4">
+        <div class="card shadow h-100">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Project 4">
+          <div class="card-body text-center">
+            <h5 class="card-title">Mobile App UI/UX</h5>
+            <p class="card-text">Clean and intuitive mobile app interfaces for user engagement.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Project 5 -->
+      <div class="col-md-4">
+        <div class="card shadow h-100">
+          <img src="https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Project 5">
+          <div class="card-body text-center">
+            <h5 class="card-title">Custom Web Application</h5>
+            <p class="card-text">A web app designed to automate and streamline business operations.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Project 6 -->
+      <div class="col-md-4">
+        <div class="card shadow h-100">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Project 6">
+          <div class="card-body text-center">
+            <h5 class="card-title">Brand Website</h5>
+            <p class="card-text">Modern website design to enhance brand identity online.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ===== WHATSAPP BUTTON ===== -->
+<a href="https://wa.me/917075901216" target="_blank" class="whatsapp-btn">
+  <i class="bi bi-whatsapp"></i>
+</a>
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p>© 2026 Pranexia IT Solutions | All Rights Reserved</p>
+    <div>
+      <a href="#">Facebook</a>
+      <a href="#">Instagram</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+window.addEventListener("scroll", function () {
+  const navbar = document.querySelector(".navbar");
+  if (window.scrollY > 50) { navbar.classList.add("scrolled"); }
+  else { navbar.classList.remove("scrolled"); }
+});
+</script>
+
+</body>
+</html>

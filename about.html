@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PariAura</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+  /* ===== GOOGLE FONTS ===== */
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;500&display=swap');
+
+  /* ===== GLOBAL ===== */
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Roboto', sans-serif; background:#f9f9f9; color:#333; line-height:1.7; scroll-behavior: smooth; }
+
+  /* ===== NAVBAR ===== */
+  .navbar { position: fixed; width: 100%; top: 0; left: 0; background: transparent !important; transition: 0.4s; z-index: 999; }
+  .navbar-brand img { height:140px; transition:0.4s; }
+  .navbar.scrolled .navbar-brand img { height:100px; }
+  .navbar .nav-link { color: #fff !important; font-weight:500; }
+  .navbar.scrolled { background: rgba(15,15,15,0.9) !important; backdrop-filter: blur(10px); }
+  .navbar.scrolled .nav-link { color:#fff !important; }
+  .navbar-toggler { border:none; }
+  .navbar-toggler-icon { background:none; width:25px; height:2px; background-color:white; position:relative; display:inline-block; }
+  .navbar-toggler-icon::before, .navbar-toggler-icon::after { content:''; position:absolute; width:25px; height:2px; background-color:white; left:0; }
+  .navbar-toggler-icon::before { top:-7px; }
+  .navbar-toggler-icon::after { top:7px; }
+  .navbar.scrolled .navbar-toggler-icon,
+  .navbar.scrolled .navbar-toggler-icon::before,
+  .navbar.scrolled .navbar-toggler-icon::after { background-color:white; }
+
+  /* ===== HERO SECTION ===== */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('https://plus.unsplash.com/premium_photo-1683120730432-b5ea74bd9047?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+  }
+  .hero-overlay { position: absolute; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index:1; }
+  .hero .content { position: relative; z-index:2; }
+  .hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 20px; }
+  .hero p { font-size: 1.3rem; margin-bottom: 30px; }
+  .hero .btn { padding: 12px 30px; font-size:1.1rem; }
+
+  /* ===== ABOUT SECTION ===== */
+  .about-section img { max-width:100%; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.1); }
+
+  /* ===== SHIELD CARDS ===== */
+  .shield {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border-radius: 50px 20px 50px 20px;
+    color: #fff;
+    text-align: center;
+    transition: 0.4s;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    padding: 30px 20px;
+    margin-bottom: 30px;
+  }
+  .shield:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  }
+  .shield img { display:block; margin:0 auto 15px auto; }
+  .shield h4 { margin-bottom:10px; font-weight:600; }
+  .shield p { font-size:0.95rem; }
+
+  /* ===== FOOTER ===== */
+  footer { background:#0e0e0e; color:#ccc; padding:40px 0; text-align:center; }
+  footer a { color:#ccc; margin:0 10px; text-decoration:none; }
+  footer a:hover { color:#1A73E8; }
+
+  /* ===== BUTTON ===== */
+  .btn-primary { background:#1A73E8; border:none; }
+  .btn-primary:hover { background:#1666c1; }
+
+  /* ===== MOBILE ===== */
+  @media (max-width:768px){
+    .navbar-brand img { height:110px; }
+    .navbar.scrolled .navbar-brand img { height:80px; }
+    .hero h1 { font-size:2rem; }
+    .hero p { font-size:1rem; }
+    .shield { padding:20px; border-radius:30px 15px 30px 15px; }
+    .shield h4 { font-size:1.2rem; }
+    .shield p { font-size:0.9rem; }
+  }
+  .whatsapp-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  color: #fff;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  text-decoration: none;
+  z-index: 9999;
+}
+
+.whatsapp-btn:hover {
+  background: #1ebe5d;
+  transform: scale(1.1);
+}
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="Logo"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+      <a href="contact.html" class="btn btn-primary ms-3">Get a Quote</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="content">
+    <h1>We Build Your Digital Future</h1>
+    <p>Modern Websites and Digital Marketing Solutions to Help Your Business Grow Online</p>
+    <a href="contact.html" class="btn btn-light btn-lg">Get Started Today</a>
+  </div>
+</section>
+
+<!-- About Section Enhanced -->
+<section class="about-section py-5">
+  <div class="container">
+    <!-- Who We Are -->
+    <div class="row align-items-center mb-5">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img src="https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=800&q=80" alt="Team Working" class="img-fluid rounded shadow">
+      </div>
+      <div class="col-md-6">
+        <h2>Who We Are</h2>
+        <p>Pranexia IT Solutions is a forward-thinking IT company delivering custom websites, web applications, and digital marketing services to help businesses establish a strong online presence. Our goal is to combine creativity with technology to provide solutions that drive growth.</p>
+        <a href="about.html" class="btn btn-primary mt-3">Learn More About Us</a>
+      </div>
+    </div>
+
+    <!-- Mission & Vision Shields -->
+    <div class="row text-center mb-5">
+      <div class="col-md-6 mb-4">
+        <div class="shield">
+          <img src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png" alt="Mission" width="80">
+          <h4>Our Mission</h4>
+          <p>To empower businesses with innovative digital solutions that increase visibility, engagement, and revenue online.</p>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="shield">
+          <img src="https://cdn-icons-png.flaticon.com/512/2910/2910760.png" alt="Vision" width="80">
+          <h4>Our Vision</h4>
+          <p>To be the most trusted partner for digital growth, delivering cutting-edge solutions that make businesses succeed in the digital world.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <div class="row align-items-center">
+      <div class="col-md-6 order-md-2 mb-4 mb-md-0">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Why Choose Us" class="img-fluid rounded shadow">
+      </div>
+      <div class="col-md-6 order-md-1">
+        <h2>Why Choose PariAura?</h2>
+        <ul class="list-unstyled mt-3">
+          <li>✔ Expert team with years of experience in web and digital marketing.</li>
+          <li>✔ Tailored solutions for every business size and niche.</li>
+          <li>✔ Transparent processes and clear communication.</li>
+          <li>✔ Focused on ROI-driven strategies to maximize growth.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="bg-primary text-white py-5 text-center">
+  <div class="container">
+    <h2>Let’s Talk</h2>
+    <p>Have a project in mind? Get in touch with our team and we’ll bring your ideas to life.</p>
+    <a href="contact.html" class="btn btn-light">Contact Us Today</a>
+  </div>
+</section>
+<!-- ===== WHATSAPP BUTTON ===== -->
+<a href="https://wa.me/917075901216" target="_blank" class="whatsapp-btn">
+  <i class="bi bi-whatsapp"></i>
+</a>
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p>© 2026 PariAura | All Rights Reserved</p>
+    <div>
+      <a href="#">Facebook</a>
+      <a href="#">Instagram</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+window.addEventListener("scroll", function () {
+  const navbar = document.querySelector(".navbar");
+  if (window.scrollY > 50) { navbar.classList.add("scrolled"); }
+  else { navbar.classList.remove("scrolled"); }
+});
+</script>
+
+</body>
+</html>

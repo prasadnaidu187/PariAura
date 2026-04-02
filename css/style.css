@@ -1,0 +1,266 @@
+/* ===== GOOGLE FONTS ===== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto:wght@400;500&display=swap');
+
+/* ===== GLOBAL STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    line-height: 1.7;
+    scroll-behavior: smooth;
+    background-color: #f9f9f9;
+    padding-top: 0; /* remove default spacing */
+}
+.navbar-brand img {
+  height: 130px; /* bigger logo */
+  width: auto;
+  transition: all 0.4s ease;
+}
+
+/* After scroll → smaller logo */
+.navbar.scrolled .navbar-brand img {
+  height: 90px;
+}
+/* ===== HAMBURGER ICON FIX ===== */
+
+/* Make icon WHITE on transparent navbar */
+.navbar .navbar-toggler {
+    border-color: rgba(255,255,255,0.6);
+}
+
+.navbar .navbar-toggler-icon {
+    filter: invert(1); /* turns icon white */
+}
+
+/* After scroll (white navbar → dark icon) */
+.navbar.scrolled .navbar-toggler {
+    border-color: rgba(0,0,0,0.2);
+}
+
+.navbar.scrolled .navbar-toggler-icon {
+    filter: invert(0); /* back to dark */
+}
+/* ===== HEADINGS ===== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* ===== NAVBAR ===== */
+/* ===== NAVBAR ===== */
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: transparent !important;
+    box-shadow: none;
+    transition: all 0.4s ease;
+    z-index: 999;
+}
+
+/* WHITE TEXT ON HERO */
+.navbar .nav-link,
+.navbar .navbar-brand {
+    color: #fff !important;
+    font-weight: 500;
+}
+
+/* ===== AFTER SCROLL ===== */
+.navbar.scrolled {
+    background: rgba(15, 15, 15, 0.9) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ✅ LIGHT TEXT FOR DARK NAVBAR */
+.navbar.scrolled .nav-link,
+.navbar.scrolled .navbar-brand {
+    color: #ffffff !important;
+}
+.navbar.scrolled .nav-link:hover {
+    color: #caa14a !important;
+}
+
+/* ===== HERO SECTION ===== */
+/* ===== HERO SECTION FINAL FIX ===== */
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+/* VIDEO */
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* OVERLAY */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 1;
+}
+
+/* CONTENT CENTER */
+.hero .container {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+@media (max-width: 768px) {
+    .hero {
+        height: 100vh; /* 🔥 FULL HEIGHT */
+    }
+}
+
+/* ===== SERVICES CARDS ===== */
+.card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+}
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+.card img {
+    height: 280px;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.card:hover img {
+    transform: scale(1.05);
+}
+.card h5 {
+    margin-top: 15px;
+    font-size: 1.25rem;
+}
+.card p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* ===== SECTIONS ===== */
+section {
+    padding: 100px 0;
+}
+section.bg-light {
+    background-color: #f5f7fa;
+}
+section.bg-primary {
+    background-color: #1A73E8;
+    color: #fff;
+}
+section.bg-primary a.btn {
+    color: #1A73E8;
+    background-color: #fff;
+}
+
+/* ===== PORTFOLIO ===== */
+.portfolio img {
+    width: 100%;
+    border-radius: 12px;
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+.portfolio img:hover {
+    transform: scale(1.05);
+    filter: brightness(0.9);
+}
+
+/* ===== CONTACT FORM ===== */
+form input, form textarea {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 12px;
+    width: 100%;
+    transition: 0.3s;
+}
+form input:focus, form textarea:focus {
+    border-color: #1A73E8;
+    box-shadow: 0 0 12px rgba(26,115,232,0.3);
+    outline: none;
+}
+form button {
+    border-radius: 8px;
+    padding: 12px 35px;
+    transition: all 0.3s;
+}
+form button:hover {
+    transform: translateY(-3px);
+}
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+    background-color: #1A73E8;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.btn-primary:hover {
+    background-color: #1666c1;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background-color: #0e0e0e;
+    color: #ccc;
+    font-size: 14px;
+    padding: 40px 0;
+}
+footer a {
+    color: #ccc;
+    margin: 0 10px;
+    transition: 0.3s;
+}
+footer a:hover {
+    color: #1A73E8;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== MEDIA QUERIES ===== */
+@media (max-width: 992px) {
+    .hero h1 { font-size: 2.5rem; }
+    .hero p { font-size: 1.1rem; }
+    .card img { height: 220px; }
+}
+@media (max-width: 576px) {
+    .hero { padding: 60px 0; }
+    .hero h1 { font-size: 2rem; }
+    .hero p { font-size: 1rem; }
+    .card img { height: 180px; }
+}
