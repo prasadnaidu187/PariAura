@@ -176,18 +176,66 @@ section {
 }
 
 /* ===== FOOTER ===== */
-footer {
-  background: #0e0e0e;
-  color: #ccc;
-  padding: 40px 0;
+/* ===== FOOTER ===== */
+.footer-section {
+  background: #020617;
+  color: #9ca3af;
+  padding: 70px 0 30px;
 }
 
-footer a {
-  color: #ccc;
+.footer-logo {
+  height: 90px;
 }
 
-footer a:hover {
-  color: #1A73E8;
+.footer-section h5 {
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.footer-section p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* LINKS */
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  color: #9ca3af;
+  transition: 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: #22d3ee;
+}
+
+/* SOCIAL ICONS */
+.social-icons a {
+  display: inline-block;
+  margin-right: 10px;
+  color: #9ca3af;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  color: #22d3ee;
+}
+
+/* BOTTOM */
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 15px;
+  font-size: 14px;
 }
 
 /* ===== MOBILE ===== */
@@ -214,6 +262,54 @@ footer a:hover {
 
   .card img {
       height: 200px;
+  }
+}
+/* ===== MOBILE FOOTER FIX ===== */
+@media (max-width: 768px) {
+
+  .footer-section {
+    text-align: center;
+    padding: 50px 20px 20px;
+  }
+
+  .footer-logo {
+    height: 90px;
+    margin-bottom: 15px;
+  }
+
+  /* Add spacing between columns */
+  .footer-section .col-lg-4,
+  .footer-section .col-lg-3,
+  .footer-section .col-lg-2,
+  .footer-section .col-md-6 {
+    margin-bottom: 25px;
+  }
+
+  /* Center lists */
+  .footer-section ul {
+    padding: 0;
+  }
+
+  .footer-section ul li {
+    margin-bottom: 8px;
+  }
+
+  /* Center contact text */
+  .footer-section p {
+    margin-bottom: 8px;
+  }
+
+  /* SOCIAL ICONS CENTER */
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  /* Bottom text */
+  .footer-bottom {
+    margin-top: 20px;
+    font-size: 13px;
   }
 }
 /* ===== WHATSAPP BUTTON ===== */
@@ -296,7 +392,7 @@ footer a:hover {
       </div>
       <div class="col-md-6">
         <h2>Who We Are</h2>
-        <p>PariAura is a forward-thinking IT company delivering custom websites, web applications, and digital marketing services to help businesses establish a strong online presence.</p>
+        <p>Pranexia IT Solutions is a forward-thinking IT company delivering custom websites, web applications, and digital marketing services to help businesses establish a strong online presence.</p>
         <a href="about.html" class="btn btn-primary">Learn More About Us</a>
       </div>
     </div>
@@ -391,15 +487,63 @@ footer a:hover {
 <a href="https://wa.me/917075901216" target="_blank" class="whatsapp-btn">
   <i class="bi bi-whatsapp"></i>
 </a>
-<!-- Footer -->
-<footer class="bg-dark text-white py-4 text-center">
+<footer class="footer-section">
   <div class="container">
-    <p>© 2026 Pranexia IT Solutions | All Rights Reserved</p>
-    <div>
-      <a href="#" class="text-white me-3">Facebook</a>
-      <a href="#" class="text-white me-3">Instagram</a>
-      <a href="#" class="text-white">LinkedIn</a>
+
+    <div class="row text-center text-md-start">
+
+      <!-- LOGO + ABOUT -->
+      <div class="col-lg-4 mb-4">
+        <img src="images/logo.png" alt="PariAura Logo" class="footer-logo mb-3">
+        <p>
+          PariAura helps businesses grow online with modern websites and digital solutions.
+          We turn ideas into powerful digital experiences.
+        </p>
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+        </ul>
+      </div>
+
+      <!-- SERVICES -->
+      <div class="col-lg-3 col-md-6 mb-4">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#">Website Development</a></li>
+          <li><a href="#">UI/UX Design</a></li>
+          <li><a href="#">SEO Optimization</a></li>
+          <li><a href="#">Digital Marketing</a></li>
+        </ul>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="col-lg-3 mb-4">
+        <h5>Contact</h5>
+        <p><i class="bi bi-telephone"></i> +91 7075901216</p>
+        <p><i class="bi bi-envelope"></i> pariaura@gmail.com</p>
+
+        <!-- SOCIAL ICONS -->
+        <div class="social-icons mt-3">
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+
     </div>
+
+    <!-- BOTTOM -->
+    <div class="footer-bottom text-center mt-4">
+      <p>© 2026 PariAura. All Rights Reserved.</p>
+    </div>
+
   </div>
 </footer>
 
