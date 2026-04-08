@@ -338,6 +338,306 @@ section {
   transform: scale(1.1);
   background: #1ebe5d;
 }
+.problem-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8fbff, #eef5ff);
+}
+
+.section-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #0d1b2a;
+}
+
+.section-subtitle {
+    color: #6c757d;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.problem-card {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 30px 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.problem-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.problem-card .icon {
+    font-size: 40px;
+    color: #0d6efd;
+    margin-bottom: 15px;
+}
+
+.problem-card h5 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+/* ===== SECTION ===== */
+.solution-section {
+  padding: 100px 20px;
+  background: #0b2545;
+  color: #fff;
+}
+
+/* WRAPPER */
+.solution-wrapper {
+  display: flex;
+  gap: 60px;
+}
+
+/* LEFT */
+.solution-left {
+  flex: 1;
+  position: sticky;
+  top: 100px;
+}
+
+.solution-left h2 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+.solution-left p {
+  font-size: 18px;
+  color: #cbd5e1;
+}
+
+/* RIGHT */
+.solution-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.step {
+  font-size: 20px;
+  opacity: 0.4;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.step span {
+  font-size: 30px;
+  font-weight: bold;
+  color: #00c6ff;
+}
+
+.step.active {
+  opacity: 1;
+  transform: translateX(10px);
+}
+
+/* ===== MOBILE DESIGN (REAL FIX) ===== */
+@media (max-width: 768px) {
+
+  .solution-wrapper {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  /* REMOVE STICKY */
+  .solution-left {
+    position: static;
+    text-align: center;
+  }
+
+  .solution-left h2 {
+    font-size: 26px;
+  }
+
+  .solution-left p {
+    font-size: 15px;
+  }
+
+  /* TURN INTO CAROUSEL-LIKE STACK */
+  .solution-right {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 20px;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .solution-right::-webkit-scrollbar {
+    display: none;
+  }
+
+  .step {
+    min-width: 250px;
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 15px;
+    flex-direction: column;
+    align-items: flex-start;
+    scroll-snap-align: center;
+    opacity: 1;
+  }
+
+  .step span {
+    font-size: 22px;
+  }
+
+  .step.active {
+    background: linear-gradient(135deg, #0d6efd, #00c6ff);
+    transform: none;
+  }
+}
+/* SECTION */
+.pricing-section {
+  padding: 100px 20px;
+  background: linear-gradient(135deg, #f5f9ff, #ffffff);
+}
+
+.pricing-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: #0b2545;
+}
+
+.pricing-subtitle {
+  color: #6c757d;
+  margin-top: 10px;
+}
+
+/* TOGGLE */
+.pricing-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.switch {
+  position: relative;
+  width: 50px;
+  height: 25px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  background: #ccc;
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  top: 2.5px;
+  left: 3px;
+  transition: 0.3s;
+}
+
+input:checked + .slider {
+  background: #0d6efd;
+}
+
+input:checked + .slider::before {
+  transform: translateX(25px);
+}
+
+/* CARD */
+.pricing-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px 25px;
+  transition: 0.4s;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.pricing-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* FEATURED */
+.featured {
+  border: 2px solid #0d6efd;
+  transform: scale(1.05);
+}
+
+.featured .badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0d6efd;
+  color: #fff;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+/* PRICE */
+.price {
+  font-size: 32px;
+  margin: 15px 0;
+  color: #0d6efd;
+}
+
+/* LIST */
+.pricing-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.pricing-card ul li {
+  margin: 8px 0;
+  color: #555;
+}
+
+/* BUTTON */
+.pricing-btn {
+  display: inline-block;
+  padding: 10px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  border: 1px solid #0d6efd;
+  color: #0d6efd;
+  transition: 0.3s;
+}
+
+.pricing-btn:hover {
+  background: #0d6efd;
+  color: #fff;
+}
+
+.pricing-btn.primary {
+  background: #0d6efd;
+  color: #fff;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .featured {
+    transform: none;
+  }
+}
   </style>
 </head>
 <body>
@@ -376,9 +676,9 @@ section {
 
   <!-- Content -->
   <div class="container">
-    <h1 class="display-4">We Build Your Digital Future</h1>
+    <h1 class="display-4">Healthcare Growth & Reputation Partner</h1>
     <p class="lead">
-      Modern Websites and Digital Marketing Solutions to Help Your Business Grow Online.
+      Pariaura helps doctors grow by bringing more patients and building trust through digital visibility, health camps, village outreach, and feedback
     </p>
     <a href="contact.html" class="btn btn-light btn-lg">Get Started Today</a>
   </div>
@@ -400,7 +700,154 @@ section {
     </div>
   </div>
 </section>
+<!-- PROBLEM SECTION - PREMIUM UI -->
+<section class="problem-section">
+  <div class="container text-center">
+    <h2 class="section-title">Why Your Clinic is Missing Patients</h2>
+    <p class="section-subtitle">Patients are searching… but not finding you.</p>
 
+    <div class="row mt-5">
+      
+      <div class="col-md-3 mb-4">
+        <div class="problem-card">
+          <i class="fas fa-search-location icon"></i>
+          <h5>Not visible on Google</h5>
+        </div>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <div class="problem-card">
+          <i class="fas fa-star-half-alt icon"></i>
+          <h5>Low reviews</h5>
+        </div>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <div class="problem-card">
+          <i class="fas fa-user-slash icon"></i>
+          <h5>Losing patients</h5>
+        </div>
+      </div>
+
+      <div class="col-md-3 mb-4">
+        <div class="problem-card">
+          <i class="fas fa-map-marked-alt icon"></i>
+          <h5>No village reach</h5>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="solution-section">
+  <div class="container">
+    <div class="solution-wrapper">
+
+      <!-- LEFT SIDE (Dynamic Content) -->
+      <div class="solution-left">
+        <div id="solutionContent">
+          <h2>Digital Visibility</h2>
+          <p>Rank your clinic on Google and get discovered by nearby patients.</p>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE (Steps) -->
+      <div class="solution-right">
+
+        <div class="step active" data-title="Digital Visibility"
+             data-desc="Rank your clinic on Google and get discovered by nearby patients.">
+          <span>01</span> Digital Visibility
+        </div>
+
+        <div class="step"
+             data-title="Feedback & Reviews"
+             data-desc="Improve ratings and build trust with new patients.">
+          <span>02</span> Feedback & Reviews
+        </div>
+
+        <div class="step"
+             data-title="Health Camps"
+             data-desc="Conduct camps and bring patients directly to your clinic.">
+          <span>03</span> Health Camps
+        </div>
+
+        <div class="step"
+             data-title="Village Outreach"
+             data-desc="Promote your clinic in nearby villages effectively.">
+          <span>04</span> Village Outreach
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ===== PRICING SECTION ===== -->
+<section class="pricing-section text-center">
+  <div class="container">
+
+    <h2 class="pricing-title">Pricing Plans</h2>
+    <p class="pricing-subtitle">Choose the plan that grows your clinic</p>
+
+    <!-- TOGGLE -->
+    <div class="pricing-toggle">
+      <span>Monthly</span>
+      <label class="switch">
+        <input type="checkbox" id="priceToggle">
+        <span class="slider"></span>
+      </label>
+      <span>Yearly</span>
+    </div>
+
+    <div class="row mt-5">
+
+      <!-- STARTER -->
+      <div class="col-md-4 mb-4">
+        <div class="pricing-card">
+          <h5>Starter</h5>
+          <h2 class="price" data-month="5999" data-year="4999">₹5,999</h2>
+          <ul>
+            <li>Google Listing</li>
+            <li>Basic SEO</li>
+            <li>Review Setup</li>
+          </ul>
+          <a href="#contact" class="pricing-btn">Get Started</a>
+        </div>
+      </div>
+
+      <!-- GROWTH (FEATURED) -->
+      <div class="col-md-4 mb-4">
+        <div class="pricing-card featured">
+          <div class="badge">Most Popular</div>
+          <h5>Growth ⭐</h5>
+          <h2 class="price" data-month="11999" data-year="9999">₹11,999</h2>
+          <ul>
+            <li>Google + Ads</li>
+            <li>Lead Generation</li>
+            <li>Review Boost</li>
+          </ul>
+          <a href="#contact" class="pricing-btn primary">Get More Patients</a>
+        </div>
+      </div>
+
+      <!-- COMMUNITY -->
+      <div class="col-md-4 mb-4">
+        <div class="pricing-card">
+          <h5>Community</h5>
+          <h2 class="price" data-month="15000" data-year="13000">₹15,000+</h2>
+          <ul>
+            <li>Health Camps</li>
+            <li>Village Outreach</li>
+            <li>Offline Promotion</li>
+          </ul>
+          <a href="#contact" class="pricing-btn">Contact Us</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 <!-- Services Preview Section -->
 <section class="bg-light py-5">
   <div class="container text-center">
@@ -559,6 +1006,54 @@ window.addEventListener("scroll", function () {
     } else {
         navbar.classList.remove("scrolled");
     }
+});
+const steps = document.querySelectorAll(".step");
+const content = document.getElementById("solutionContent");
+
+function updateContent(step) {
+  const title = step.getAttribute("data-title");
+  const desc = step.getAttribute("data-desc");
+
+  content.innerHTML = `<h2>${title}</h2><p>${desc}</p>`;
+}
+
+// SCROLL EFFECT (Desktop)
+window.addEventListener("scroll", () => {
+  if (window.innerWidth > 768) {
+    let index = 0;
+
+    steps.forEach((step, i) => {
+      const rect = step.getBoundingClientRect();
+      if (rect.top < window.innerHeight / 2) {
+        index = i;
+      }
+    });
+
+    steps.forEach(step => step.classList.remove("active"));
+    steps[index].classList.add("active");
+
+    updateContent(steps[index]);
+  }
+});
+
+// CLICK / TAP (Mobile Friendly)
+steps.forEach(step => {
+  step.addEventListener("click", () => {
+    steps.forEach(s => s.classList.remove("active"));
+    step.classList.add("active");
+    updateContent(step);
+  });
+});
+const toggle = document.getElementById("priceToggle");
+const prices = document.querySelectorAll(".price");
+
+toggle.addEventListener("change", () => {
+  prices.forEach(price => {
+    const monthly = price.getAttribute("data-month");
+    const yearly = price.getAttribute("data-year");
+
+    price.innerText = toggle.checked ? "₹" + yearly : "₹" + monthly;
+  });
 });
 </script>
 </body>
